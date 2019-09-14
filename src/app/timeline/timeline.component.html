@@ -1,0 +1,18 @@
+<mat-card *ngFor="let item of data.sea_shipments">
+  <mat-card-header (click)="collapsed=!collapsed">
+    <mat-card-title style="font-size: 20px;cursor: pointer;"><i class="fa fa-ship" aria-hidden="true"></i> {{data.name}}
+      {{item.carrier.name}} <i *ngIf="collapsed" class="fa fa-angle-double-down" aria-hidden="true"></i>
+    </mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content *ngIf="!collapsed">
+    <ul class="timeline scrolling-wrapper" id="timeline">
+      <li class="card" *ngFor="let itemed of item.sea_movements;">
+        <app-location [booking_reference]="item.booking_reference" [vessel_telo_loading]="itemed.vessel_telo_loading"
+          [vessel_telo_discharge]="itemed.vessel_telo_discharge" [vessel_telo_discharge]="itemed.vessel_telo_discharge"
+          [carrier]="item.carrier" [bill_of_lading_reference]="item.bill_of_lading_reference"></app-location>
+      </li>
+    </ul>
+  </mat-card-content>
+
+</mat-card>
