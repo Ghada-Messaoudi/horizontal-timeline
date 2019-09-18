@@ -1,6 +1,6 @@
 <div *ngFor="let item of data.sea_shipments">
 
-  <div class="title"><i class="fa fa-ship" aria-hidden="true"></i> &nbsp;{{data.name}}
+  <div class="title">{{data.name}}
     {{item.carrier.name}} <span (click)="openDialog(item.statuses)" class="float-right"><i class="fa fa-wifi"
         aria-hidden="true"></i></span></div>
 
@@ -8,6 +8,47 @@
     <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
       <mat-expansion-panel-header class="right-aligned-header">
         <mat-panel-title>
+          <i class="fa fa-ship" aria-hidden="true"></i> &nbsp;
+          <span style="color: rgba(0,0,0,.54)">From: {{item.sea_movements[0].vessel_telo_loading.location.name}}</span>
+        </mat-panel-title>
+        <mat-panel-description class="float-right">
+          <span>To: {{item.sea_movements[1].vessel_telo_discharge.location.name}}</span>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <ul class="timeline scrolling-wrapper">
+        <li class="card" *ngFor="let itemed of item.sea_movements;">
+          <app-location [booking_reference]="item.booking_reference" [vessel_telo_loading]="itemed.vessel_telo_loading"
+            [vessel_telo_discharge]="itemed.vessel_telo_discharge"
+            [vessel_telo_discharge]="itemed.vessel_telo_discharge" [carrier]="item.carrier"
+            [bill_of_lading_reference]="item.bill_of_lading_reference"></app-location>
+        </li>
+      </ul>
+    </mat-expansion-panel>
+    <mat-expansion-panel *ngFor="let item of data.rail_shipments" (opened)="panelOpenState = true"
+      (closed)="panelOpenState = false">
+      <mat-expansion-panel-header class="right-aligned-header">
+        <mat-panel-title>
+            <i class="fa fa-train" aria-hidden="true"></i> &nbsp;
+          <span style="color: rgba(0,0,0,.54)">From: {{item.sea_movements[0].vessel_telo_loading.location.name}}</span>
+        </mat-panel-title>
+        <mat-panel-description class="float-right">
+          <span>To: {{item.sea_movements[1].vessel_telo_discharge.location.name}}</span>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <ul class="timeline scrolling-wrapper">
+        <li class="card" *ngFor="let itemed of item.sea_movements;">
+          <app-location [booking_reference]="item.booking_reference" [vessel_telo_loading]="itemed.vessel_telo_loading"
+            [vessel_telo_discharge]="itemed.vessel_telo_discharge"
+            [vessel_telo_discharge]="itemed.vessel_telo_discharge" [carrier]="item.carrier"
+            [bill_of_lading_reference]="item.bill_of_lading_reference"></app-location>
+        </li>
+      </ul>
+    </mat-expansion-panel>
+    <mat-expansion-panel *ngFor="let item of data.road_shipments" (opened)="panelOpenState = true"
+      (closed)="panelOpenState = false">
+      <mat-expansion-panel-header class="right-aligned-header">
+        <mat-panel-title>
+            <i class="fa fa-road" aria-hidden="true"></i> &nbsp;
           <span style="color: rgba(0,0,0,.54)">From: {{item.sea_movements[0].vessel_telo_loading.location.name}}</span>
         </mat-panel-title>
         <mat-panel-description class="float-right">
