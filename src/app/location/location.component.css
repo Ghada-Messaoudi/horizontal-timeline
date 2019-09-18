@@ -1,5 +1,5 @@
 .tiny {
-  font-size: 9px;
+  font-size: 10px;
 }
 
 .timeline {
@@ -40,9 +40,9 @@
   transition: all 200ms ease-in;
 }
 
-.status h4 {
-  /* font-weight: 600; */
-}
+/* .status h4 {
+  font-weight: 600;
+} */
 
 .status:before {
   content: "";
@@ -72,9 +72,9 @@
   transition: all 200ms ease-in;
 }
 
-.li.complete .status h4 {
-  /* color: #00a0f7; */
-}
+/* .li.complete .status h4 {
+  color: #00a0f7;
+} */
 
 @media (min-device-width: 320px) and (max-device-width: 700px) {
   .timeline {

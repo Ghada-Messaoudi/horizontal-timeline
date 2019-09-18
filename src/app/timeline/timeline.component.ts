@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { StatusesComponent } from './statuses/statuses.component';
 
 @Component({
   selector: 'app-timeline',
@@ -6,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./timeline.component.css']
 })
 export class TimelineComponent implements OnInit {
-  collapsed;
   medium;
+  panelOpenState = false;
   data = {
     "id": 7922,
     "name": "Demo shipment",
@@ -800,9 +802,20 @@ export class TimelineComponent implements OnInit {
     ]
   }
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit() {
+  }
+
+  openDialog(data) {
+    const dialogRef = this.dialog.open(StatusesComponent, {
+      width: '800px',
+      data: data
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
 }
