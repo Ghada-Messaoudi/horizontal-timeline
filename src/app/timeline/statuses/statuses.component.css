@@ -1,0 +1,12 @@
+table {
+  width: 100%;
+}
+
+*{
+  font-size: 11px;
+}
+
+.title{
+  color: #00a0f7;
+  font-size: 16px;
+}
